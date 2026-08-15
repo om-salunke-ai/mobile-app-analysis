@@ -1,70 +1,39 @@
-# mobile-app-analysis
-Mobile app usage analysis among students using Python and Streamlit
-
-
 # Mobile App Preferences Analysis
 
-A data analysis web app I built using Python and Streamlit that 
-explores mobile app usage patterns among students.
+An interactive Streamlit dashboard for exploring mobile-app usage patterns reported by students. The project demonstrates data cleaning, descriptive analysis, and visualisation with Python.
 
-The data was collected via Google Forms from real students, then 
-cleaned and visualized through an interactive multi-page dashboard.
+## Features
 
----
+- Browse and filter the survey dataset by gender
+- Visualise app, device, and daily-usage distributions
+- Compare reported app preferences across gender groups
+- Generate summary metrics from the dataset
+- Use an interactive daily screen-time calculator
 
-## What it does
+## Technology
 
-The app has 5 pages:
+- Python
+- Streamlit
+- pandas
+- CSV data exported from Google Forms
 
-- **Home** — project overview
-- **Dataset Viewer** — browse the raw data, filter by gender
-- **Dashboard** — bar charts for most-used apps, phone types, 
-  usage hours, and a gender vs app comparison table
-- **Insights** — auto-generated text findings from the dataset 
-  (top app, average usage, Android vs iPhone split)
-- **Usage Calculator** — enter your daily screen time and get 
-  a health-level rating (Low / Moderate / High)
+## Run locally
 
----
-
-## Built with
-
-- **Python** + **Streamlit** — app structure and UI
-- **Pandas** — data cleaning and analysis
-- **Google Forms** — data collection from students
-- **CSV file** — dataset storage
-
----
-
-## Run it locally
+Prerequisites: Python 3.10 or later.
 
 ```bash
 git clone https://github.com/om-salunke-ai/mobile-app-analysis.git
 cd mobile-app-analysis
-pip install streamlit pandas
+pip install -r requirements.txt
 python -m streamlit run app.py
 ```
 
-Opens at `http://localhost:8501`
+The application opens at `http://localhost:8501`.
 
----
+## Data and limitations
 
----
+The included dataset is a small educational survey sample. Response timestamps have been removed, and findings should not be treated as representative of a wider population.
 
-## Key findings
+## License
 
-- Most students use Android phones
-- Instagram and YouTube dominate as most-used apps
-- Average daily usage is around 3 hours
-- Main reasons for app usage are communication and entertainment
-
----
-
-## About
-
-Made by **Om Salunke** — CS student at Vishwakarma University, Pune.  
-This was a second Python project where I worked with real survey 
-data instead of dummy data — cleaning messy Google Form responses 
-and turning them into actual charts was the main challenge.
-
-GitHub: [@om-salunke-ai](https://github.com/om-salunke-ai)
+This project is licensed under the MIT License. See [LICENSE](LICENSE).
