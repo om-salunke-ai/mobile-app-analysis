@@ -10,7 +10,7 @@ df = df.rename(
     columns={
         "What is your age?": "Age",
         "What is your gender?": "Gender",
-        "Which mobile phone do you use?": "Phone Type",
+        "3)Which mobile phone do you use?": "Phone Type",
         "How many hours do you use your phone daily?": "Usage Hours",
         "Which app do you use the most?": "Most-Used App",
         "Reason of using that": "Reason",
@@ -92,10 +92,14 @@ elif page == "Dashboard":
 
     if "Gender" in df.columns and "Most-Used App" in df.columns:
         st.subheader("Comparison: Gender and Reported App Preferences")
-        gender_app = pd.crosstab(
-            df["Gender"],
-            df["Most-Used App"].astype(str).str.split(",").explode().str.strip(),
+        gender_apps = (
+            df[["Gender", "Most-Used App"]]
+            .dropna()
+            .assign(**{"Most-Used App": lambda data: data["Most-Used App"].astype(str).str.split(",")})
+            .explode("Most-Used App")
         )
+        gender_apps["Most-Used App"] = gender_apps["Most-Used App"].str.strip()
+        gender_app = pd.crosstab(gender_apps["Gender"], gender_apps["Most-Used App"])
         st.dataframe(gender_app, use_container_width=True)
 
     numeric_columns = df.select_dtypes(include=["int64", "float64"])
